@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
 		body {
 			margin: 0;
@@ -11,17 +13,18 @@
 			background: #fff7fb;
 			font-family: system-ui, sans-serif;
 			color: #5b4350;
+			min-height: 100dvh;
 		}
 
 		#question {
 			margin-bottom: 24px;
-			font-size: 4rem;
+			font-size: clamp(2.5rem, 8vw, 4rem);
+			text-align: center;
 		}
 
 		#buttons {
 			display: flex;
-			/*flex-direction: column;*/
-			gap: 6rem;
+			gap: clamp(2rem, 12vw, 4rem);
 		}
 
 		#yes, #no {

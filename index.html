@@ -1,26 +1,77 @@
 <html>
 <head>
 	<style>
+		body {
+			margin: 0;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			background: #fff7fb;
+			font-family: system-ui, sans-serif;
+			color: #5b4350;
+		}
+
+		#question {
+			margin-bottom: 24px;
+			font-size: 2rem;
+		}
+
+		#buttons {
+			display: flex;
+			gap: 12px;
+		}
+
+		#yes, #no {
+			border: 0;
+			padding: 10px 22px;
+			border-radius: 999px;
+			font-size: 1rem;
+			font-weight: bold;
+			cursor: pointer;
+			box-shadow: 0 4px 12px #e8d5df;
+		}
+
+		#yes {
+			background: #f3a6c4;
+			color: white;
+		}
+
 		#no {
-			position: absolute;
+			background: white;
+			color: #8d7180;
 		}
 	</style>
 </head>
-<body>
-	<h1>Do you like me?</h1>
 
-	<button>YES</button>
-	<button id="no" onmouseover="runAway()">no</button>
+<body>
+	<h1 id="question"></h1>
+
+	<div id="buttons">
+		<button id="yes">YES</button>
+		<button id="no" onmouseover="runAway()">no</button>
+	</div>
 
 	<script>
+		const params = new URLSearchParams(location.search);
+
+		question.textContent = params.get('q');
+
+		yes.onclick = () =>
+			location.href = 'message.html?text=' +
+				encodeURIComponent(params.get('y'));
+
+		no.onclick = () =>
+			location.href = 'message.html?text=' +
+				encodeURIComponent(params.get('n'));
+
 		function runAway() {
-			const button = document.getElementById("no");
-
-			const x = Math.random() * (window.innerWidth - button.offsetWidth);
-			const y = Math.random() * (window.innerHeight - button.offsetHeight);
-
-			button.style.left = x + "px";
-			button.style.top = y + "px";
+			no.style.position = 'fixed';
+			no.style.left =
+				Math.random() * (innerWidth - no.offsetWidth) + 'px';
+			no.style.top =
+				Math.random() * (innerHeight - no.offsetHeight) + 'px';
 		}
 	</script>
 </body>

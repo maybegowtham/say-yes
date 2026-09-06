@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 30px;
+			background: #fff7fb;
+			font-family: system-ui, sans-serif;
+			color: #5b4350;
+		}
+
+		#message {
+			max-width: 700px;
+			text-align: center;
+			font-size: 2rem;
+			line-height: 1.5;
+			font-weight: 700;
+		}
+	</style>
+</head>
+
+<body>
+	<h1 id="message"></h1>
+
+	<script>
+		const params = new URLSearchParams(window.location.search);
+		if(params.get("text") == null)
+			message.textContent = params.get("text")
+		else
+			message.textContent = "YAY"
+	</script>
+</body>
+</html>

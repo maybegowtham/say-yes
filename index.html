@@ -55,16 +55,15 @@
 
 	<script>
 		const params = new URLSearchParams(location.search);
-
-		question.textContent = params.get('q');
+		question.textContent = params.get('q') || 'Do you like me?'
 
 		yes.onclick = () =>
 			location.href = 'message.html?text=' +
-				encodeURIComponent(params.get('y'));
+				encodeURIComponent(params.get('y') || 'YAY');
 
 		no.onclick = () =>
 			location.href = 'message.html?text=' +
-				encodeURIComponent(params.get('n'));
+				encodeURIComponent(params.get('n') || 'ok.');
 
 		function runAway() {
 			no.style.position = 'fixed';

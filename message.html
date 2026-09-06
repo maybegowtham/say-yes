@@ -33,10 +33,7 @@
 
 	<script>
 		const params = new URLSearchParams(window.location.search);
-		if(params.get("text") == null)
-			message.textContent = params.get("text")
-		else
-			message.textContent = "YAY"
+		message.textContent = params.get("text")
 	</script>
 </body>
 </html>

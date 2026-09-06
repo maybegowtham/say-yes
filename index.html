@@ -1,0 +1,27 @@
+<html>
+<head>
+	<style>
+		#no {
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<h1>Do you like me?</h1>
+
+	<button>YES</button>
+	<button id="no" onmouseover="runAway()">no</button>
+
+	<script>
+		function runAway() {
+			const button = document.getElementById("no");
+
+			const x = Math.random() * (window.innerWidth - button.offsetWidth);
+			const y = Math.random() * (window.innerHeight - button.offsetHeight);
+
+			button.style.left = x + "px";
+			button.style.top = y + "px";
+		}
+	</script>
+</body>
+</html>

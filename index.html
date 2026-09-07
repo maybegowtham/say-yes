@@ -46,33 +46,32 @@
 		#no {
 			background: white;
 			color: #8d7180;
+			transition: transform 0.3s ease;
 		}
 	</style>
 </head>
-
 <body>
 	<h1 id="question"></h1>
-
 	<div id="buttons">
 		<button id="yes">YES</button>
-		<button id="no" onmouseover="runAway()" onclick="runAway()">no</button>
+		<button id="no" onpointerenter="runAway()" onclick="runAway()">no</button>
 	</div>
-
 	<script>
 		const params = new URLSearchParams(location.search);
 
-		question.textContent = params.get('q') || 'Do you like me?'
+		question.textContent = params.get('q') || 'Do you like me?';
 
 		yes.onclick = () =>
 			location.href = 'message.html?text=' +
 				encodeURIComponent(params.get('y') || 'YAY');
 
+		const start = no.getBoundingClientRect();
+
 		function runAway() {
-			no.style.position = 'fixed';
-			no.style.left =
-				Math.random() * (innerWidth - no.offsetWidth) + 'px';
-			no.style.top =
-				Math.random() * (innerHeight - no.offsetHeight) + 'px';
+			const x = Math.random() * (innerWidth - no.offsetWidth) - start.left;
+			const y = Math.random() * (innerHeight - no.offsetHeight) - start.top;
+
+			no.style.transform = `translate(${x}px, ${y}px)`;
 		}
 	</script>
 </body>
